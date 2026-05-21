@@ -48,10 +48,6 @@ const BreakingNews = () => {
 ]
 
 
-
-
-
-
     return (
         <div className="w-11/13 mx-auto border border-solid border-red-200 bg-gray-300 py-2 flex space-x-2">
                     <button className="btn bg-red-600 text-white mx-2">Latest News</button>

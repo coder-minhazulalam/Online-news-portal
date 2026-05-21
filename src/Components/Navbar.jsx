@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="flex flex-row justify-end items-center space-x-2">
            <Image  src={demoUser} alt="demo" height={60}  width={60}  />
            <Link href="/login">
-             <button  className="bg-gray-700 text-white px-7 py-2">LogIn</button>
+             <button  className="btn bg-gray-700 text-white px-7 py-2">LogIn</button>
            </Link>
           
 

@@ -1,4 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
+import swim from '@/assets/swimming.png';
+import play from '@/assets/playground.png';
+import cls from '@/assets/class.png';
+
+
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const RightSideBar = () => {
@@ -30,6 +36,19 @@ const RightSideBar = () => {
                     <FaInstagram className="mr-2"/>Instagram
                     </button>
             </div>
+
+            {/* Q-zone */}
+
+            <h1 className="font-bold block text-start text-gray-800 mt-5  p-3 bg-gray-300">Q-zone</h1>
+
+            <div className="flex flex-col items-center space-y-4  p-3 bg-gray-300">
+                 <Image src={swim} alt='swim' height={100} width={200}/>
+                 <Image src={play} alt='swim' height={100} width={200}/>
+                 <Image src={cls} alt='swim' height={100} width={200}/>
+
+            </div>
+
+
 
 
 
