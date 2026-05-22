@@ -10,7 +10,7 @@ import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-ic
 const RightSideBar = () => {
     return (
         <div className="flex flex-col p-2">
-            <h1 className="font-bold text-gray-600">LogIn With</h1>
+            <h1 className="font-bold text-black">LogIn With</h1>
 
             <div className="flex flex-col mt-3 space-y-2">
                     <button className="btn p-2 flex  justify-center items-center border border-solid border-blue-400">
