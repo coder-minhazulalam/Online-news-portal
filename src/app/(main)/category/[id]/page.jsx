@@ -3,6 +3,11 @@ import NewsCard from "@/Components/HomePage/news/NewsCard";
 import RightSideBar from "@/Components/HomePage/news/RightSideBar";
 import { CategoriesNewsDetails, getCategoriesData } from "@/lib/Data";
 
+export const metadata = {
+  title: 'Categorical News',
+  description: '...',
+}
+
 
 const CategoryDetailsPage = async({ params }) => {
 

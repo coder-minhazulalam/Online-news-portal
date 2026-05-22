@@ -1,11 +1,30 @@
-import BreakingNews from "@/Components/BreakingNews";
 import RightSideBar from "@/Components/HomePage/news/RightSideBar";
 import SingleNewsDetails from "@/Components/HomePage/news/SingleNewsDetails";
 import { SingleNewsDetailsAPI } from "@/lib/Data";
 
+
+// generated Metadata
+// generated Metadata
+export const generateMetadata = async ({ params }) => {
+
+  const { id } = await params;
+
+  console.log("inner generateMetadata", id);
+
+  const NewsData = await SingleNewsDetailsAPI(id);
+
+  const singleNews = NewsData?.data?.[0];
+
+  return {
+    title: singleNews?.title || "News Details",
+    description: singleNews?.details || "News description",
+  };
+};
+
+
 const NewsDetailsPage = async ({ params }) => {
 
-  const { id } = params;
+  const { id } = await params;
 
   const NewsData = await SingleNewsDetailsAPI(id);
   const singleNewsDetailsData = NewsData.data;
