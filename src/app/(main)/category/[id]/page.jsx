@@ -41,6 +41,8 @@ const CategoryDetailsPage = async({ params }) => {
           <div className="col-span-3">
            <RightSideBar/>
         </div>
+
+
      </div>
 
     );
