@@ -1,32 +1,56 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage = () => {
 
+  //  Password visiblity 
 
-      const { register , 
-        handleSubmit , 
-        watch , 
-        formState : 
-        {
-            errors
+  const [ showPassword , setshowPassword ] = useState(false)
+ 
+     // REACT HOOK ----------------------------->
+           const { register , 
+             handleSubmit , 
+             watch , 
+             formState : 
+             {
+                 errors
+             }
+           } = useForm()
+     
+     
+      const handleSubmitForm = async(DATA) =>
+           {
+                    const {email , password } = DATA
+                    console.log({email , password } )
+    
+    
+            //   Authentication - login
+            
+                const { data : res , error } = await authClient.signIn.email({
+                email: email,
+                password: password,
+                rememberMe: true,
+                callbackURL: "/",
+            });
+
+            console.log("LOGIN ERROR:", error);
+            console.log("LOGIN DATA:", res);
+                
+              if (error) {
+                alert("Wrong Attempt! Please try again");
+                return;
+              }
+    
+        if (res) {
+          alert("You are successfully Login");
         }
-      } = useForm()
-
-
-      const handleSubmitForm = (data ) =>
-      {
-            console.log(data)
-      }
-
-
-
-
-
-
-
+    }
+ 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)} className="container mx-auto bg-stale-100 flex flex-col justify-center items-center mt-10"  >
       <fieldset className="fieldset bg-base-200 border-base-300 w-5/12 p-10 rounded-box">
@@ -47,19 +71,33 @@ const LoginPage = () => {
         {errors.email && <span className="text-red-600">This field is required</span>}
 
 
-        {/* PASSWORD */}
-        <label className="label">Password</label>
-        <input 
-        type="password" 
-        className="input w-full" 
-        placeholder="Password" 
-        {...register("password",
-        {
-            required: "Password is required"
-        })
-        }/>
+{/* PASSWORD */}
+<label className="label">Password</label>
 
-        {errors.password && <span className="text-red-600">This field is required</span>}
+<div className="relative w-full">
+  <input
+    type={showPassword ? "text" : "password"}
+    className="input w-full pr-12"
+    placeholder="Password"
+    {...register("password", {
+      required: "Password is required",
+    })}
+  />
+
+  <span
+    className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
+    onClick={() => setshowPassword(!showPassword)}
+  >
+    {showPassword ? <FaEye /> : <FaEyeSlash />}
+  </span>
+</div>
+
+{errors.password && (
+  <span className="text-red-600">
+    This field is required
+  </span>
+)}
+
 
 
         <button className="btn btn-neutral mt-4">Login</button>
