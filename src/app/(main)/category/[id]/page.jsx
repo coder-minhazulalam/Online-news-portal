@@ -38,7 +38,7 @@ const CategoryDetailsPage = async({ params }) => {
                 <NewsCard   key={item._id}  item={item} />
                 ))
             ) : (
-                <h1>There is No Data</h1>
+                <h1 className="text-center text-red-500 p-5 font-bold">No Data</h1>
             )
             }
         </div>
